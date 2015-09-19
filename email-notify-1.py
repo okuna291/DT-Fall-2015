@@ -7,7 +7,7 @@
 import feedparser		# imports feedparser to parse XML feed
 
 user='dtclass15@gmail.com'		# replace dtclass15@gmail.com with your personal gmail user or email, or youruser@newschool.edu for your school account
-passwd='***'		# replace *** with your password for the above account
+passwd='dtclass15password'		# replace *** with your password for the above account
 
 
 newmails = feedparser.parse("https://" + user + ":" + passwd + "@mail.google.com/gmail/feed/atom").entries
