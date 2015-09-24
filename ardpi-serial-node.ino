@@ -9,10 +9,10 @@ int i = 0;
 
 void loop() {
   if (i == 0) {
-    Serial.print("0");
+    Serial.println("0");
     i = 1;
   } else {
-    Serial.print("1");
+    Serial.println("1");
     i = 0;
   }
 
