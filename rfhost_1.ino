@@ -3,7 +3,7 @@
 
 device_t role = HOST;
 char state = 0;
-int LEDpin = 2;
+int LEDpin = 4;
 
 void setup()
 {

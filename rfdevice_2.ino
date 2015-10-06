@@ -21,8 +21,8 @@ int LEDpin = 2;
 int LEDpin2 = 3;
 
 
-int xpin = 4;
-int ypin = 5;
+int xpin = 2;
+int ypin = 4;
 int zpin = 6;
 
 int xval = 0;
