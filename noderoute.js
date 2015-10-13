@@ -11,6 +11,13 @@ router.get('/render', function (req, res) {
   res.end('Render to response!')
 })
 
+
+router.get('/hello', function (req, res) {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+  // console.log("res")
+  res.end('hello!')
+})
+
 router.get('/', function (req, res) {
 	fs.readFile('./public/index.html', function (err, html) {
     if (err) {
