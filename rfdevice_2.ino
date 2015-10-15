@@ -12,17 +12,15 @@ Since the Device must initiate communication, the
 device "polls" the Host evey 200ms.
 */
 
-#include <RFduinoGZLL.h>
+#include <RFduinoGZLL.h> // include rfduino library
+device_t role = DEVICE2; // set Device name... DEVICE2 to DEVICE7 / HOST
 
-device_t role = DEVICE2;
-
-// pin for the Green Led
+//define pins
 int LEDpin = 2;
 int LEDpin2 = 3;
 
-
-int xpin = 2;
-int ypin = 4;
+int xpin = 4;
+int ypin = 5;
 int zpin = 6;
 
 int xval = 0;
@@ -33,15 +31,10 @@ int xvalp = 0;
 int yvalp = 0;
 int zvalp = 0;
 
-double x;
-double y;
-double z;
-
-
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(9600); // begin serial communications
   pinMode(LEDpin, OUTPUT);
   pinMode(LEDpin2, OUTPUT);
   pinMode(xpin, INPUT);
@@ -51,31 +44,26 @@ void setup()
   RFduinoGZLL.txPowerLevel = 0;
 
   // start the GZLL stack
-  RFduinoGZLL.begin(role);
+  RFduinoGZLL.begin(role); // begin BLE communications
 }
 
 void loop()
 {
-  char xdata[4];   //declaring character array
+  char xdata[4];   //declaring character array -- 3 characters plus a nill charachter as terminator
   char ydata[4];
   char zdata[4];
-  char mydata[12];
+  char mydata[15]; // declare mydata array
 
-  String xstr;
-  String ystr;
+  String xstr;//declaring string
+  String ystr;//declaring string
   String zstr;//declaring string
   String mystr;
 
-//  xval = analogRead(xpin);
-//  yval = analogRead(ypin);
-//  zval = analogRead(zpin);
-  xval = 100;
-  yval = 200;
-  zval = 300;
+  xval = analogRead(xpin); // read pin sensor values and place into variavles
+  yval = analogRead(ypin);
+  zval = analogRead(zpin);
 
-  
-
-  
+  // convert sendor values to 3 characters.. i.e. value 2 converts to 002, value 40 converts to 040
   if (xval >= 100)
   {
     xstr = String(xval);
@@ -111,29 +99,21 @@ void loop()
     zstr = String(0) + String(0) + String(zval);
   }
 
-  xstr.toCharArray(xdata, 4); //passing the value of the string to the character array
+  xstr.toCharArray(xdata, 4); //passing the string value of sensors to the character array
   ystr.toCharArray(ydata, 4);
   zstr.toCharArray(zdata, 4);
- 
 
-  mystr = xstr+"," + ystr+"," + zstr;
+  mystr = "a," + xstr+"," + ystr+"," + zstr; // combining data for sending to other rfduino... change "a" to other characters to identify message package
 
-  mystr.toCharArray(mydata, 12);
+  mystr.toCharArray(mydata, 15); // place mystr data into character buffer
 
-// Serial.print(xdata);
-//  Serial.print(", ");
-//  Serial.print(ydata);
-//  Serial.print(", ");
-//  Serial.print(zdata);
-//  Serial.print(", ");
-  Serial.println(mydata);
+  Serial.println(mystr); // print buffer to serial
 
- RFduinoGZLL.sendToHost(mydata, 12);
+ RFduinoGZLL.sendToHost(mydata, 15); // send buffer to host other rfduino
     delay(250);
-
-
 }
 
+// if data is recived from another rfduino
 void RFduinoGZLL_onReceive(device_t device, int rssi, char *data, int len)
 {
   // ignore acknowledgement without payload

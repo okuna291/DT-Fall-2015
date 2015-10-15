@@ -3,60 +3,37 @@
   <head>
     <meta charset="UTF-8">
     <title>test</title>
-    <script src="//192.168.1.140:8000/socket.io/socket.io.js" type="text/javascript"></script>
-
-    <script src="libraries/p5.js" type="text/javascript"></script>
-
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="//192.168.1.140:8000/socket.io/socket.io.js" type="text/javascript"></script> <!-- link to your socket.io script to enable socket communication // Change 192.168.1.140 to your raspberry pi IP#-->
+    <script src="libraries/p5.js" type="text/javascript"></script><!-- link to p5.js basic script-->
+    <script src="libraries/p5.dom.js" type="text/javascript"></script><!-- link to p5.js DOM script-->
     <script src="libraries/p5.sound.js" type="text/javascript"></script>
-
+    <!-- link to p5.js Sound script-->
     <script src="sketch.js" type="text/javascript"></script>
- 
+    <!-- link to your main p5.js script-->
+    
+
     <script>
-
-
-var socket;
-var red,blue,green;
-var longitude;
-var url='192.168.1.140';
-var port=8000
-//var url='http//47.18.216.182';
-
-//mapping function
-function map_range(value, low1, high1, low2, high2) {
+var socket; //define variable
+var red,blue,green; //define variables
+var port=8000 //define variable --- port to be listend to
+var url='192.168.1.140'; // Change 192.168.1.140 to your raspberry pi IP#
+//var url='http//47.18.216.182'; // change to http:// if dealing with external IP address
+function map_range(value, low1, high1, low2, high2) { //mapping function
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
-  socket = io.connect(url+':'+port);
-  // socket.on('toScreen', function (data) {
-  //   console.log(data);
-  //   document.getElementById("r_space").innerHTML = data.r;
-  // document.getElementById("g_space").innerHTML = data.g;
-  // document.getElementById("b_space").innerHTML = data.b;
-  //   red = data.r;
-  //   blue = data.g;
-  //   green = data.b;
-  //   document.body.style.backgroundColor = 'rgb(' + data.r + ',' + data.g + ',' + data.b + ')';
-  // });
+  socket = io.connect(url+':'+port); // create a socket instance with given URL (ip) and port to listen on
 
-
-
-//When color button is clicked emit data to socket
-function toSerial(x,y,z){
-    // console.log(x);
-    x=map_range(x, 0, 1500, 0, 250);
-    y=map_range(y, 0, 1500, 0, 250);
-    z=map_range(z, 0, 1500, 0, 250);
-    x=x.toFixed(2);
-    y=y.toFixed(2);
-    z=z.toFixed(2);
-
-
-
-  socket.emit('toSerial', { r: x, g: y, b:z });
-
-
+function toSerial(x,y,z){ // fuction toSerial will be called in main p5.js script to send data to serial
+    x=map_range(x, 0, 1500, 0, 250); //mapping using mapping function above
+    y=map_range(y, 0, 1500, 0, 250); //mapping using mapping function above
+    z=map_range(z, 0, 1500, 0, 250); //mapping using mapping function above
+    x=x.toFixed(2); // truncate value to 2 dec. points
+    y=y.toFixed(2);// truncate value to 2 dec. points
+    z=z.toFixed(2);// truncate value to 2 dec. points
+    socket.emit('toSerial', { r: x, g: y, b:z }); // emit package called "toSerial" with contents of a javascript object
 }</script>
+
 
     <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
   </head>
