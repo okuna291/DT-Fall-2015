@@ -16,6 +16,8 @@ app.use(express.static(__dirname + '/'));
 console.log('Simple static server listening at '+url+':'+port);
 
 
+
+
 io.sockets.on('connection', function (socket) {
 port.open(function(error) {
 
