@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    
+    <h1 id="title">My Cool Site</h1>
+
+    <img src="images/cat.png" alt="just a simple cat">
+    
+
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+    <button id="g">Change user</button>
+
+  <button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Date and Time.</button>
+    
+
+    <button type="button"
+onclick="document.getElementById('demo').innerHTML = 'Hello'">
+Hello</button>
+
+<button type="button" onclick="red()">Red Color and Size 25px</button>
+<button type="button" onclick="blue()">Blue Color and Size 10px</button>
+<button onclick="list()">List Array</button>
+
+<br>
+<input id="numb" type="number">
+<button type="button" onclick="validateNumber()">Submit</button>
+<button type="button" onclick="alertWindow()">Alert</button>
+<button type="button" onclick="docWrite()">Doc Write</button>
+
+
+     <script src="scripts/main.js"></script>
+  </body>
+</html>

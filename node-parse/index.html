@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+#container {margin: 0 auto;width: 100%; height: 400px; background-color: gray;}
+#input {position: relative;
+			width: 400px; 
+			margin: 0 auto;
+			border:10px;
+			text-align: center; 
+		}
+#output {position: relative;
+			width: 400px; 
+			margin: 0 auto;
+			border:10px;
+			text-align: center; 
+		}
+		#boxes {position: absolute;
+			width: 200px; 
+			border:10px;
+			text-align: center; 
+		
+		}
+#head {position: relative;
+			width: 400px; 
+			margin: 0 auto;
+			border:10px;
+			text-align: center; 
+			background-color: red;
+		}
+#toParse {position: relative;
+			width: 400px; 
+			margin: 0 auto;
+			border:10px;
+			width: 100px; 
+			height: 100px; 
+			background-color: red;
+			text-align: center; 
+			color: white;
+		}
+#fromParse {position: absolute;
+			width: 400px; 
+			margin: 0 auto;
+			border:10px;
+			width: 100px; 
+			height: 100px; 
+			background-color: green;
+			text-align: center; 
+			color: white;
+		}
+h1   {color:white}
+p    {color:green}
+</style>
+	<head>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<title>Node-Parse</title>
+	</head>
+
+	<body style="margin: 0;border:0">
+		
+		<div id="container" >
+			<div id="head"><h1>Node and Parse</h1></div>
+			<div id="input">
+				<div id="boxes">
+				<form>
+			<input id="firstName" type="text" name="rval" placeholder="firstName">
+			<input id="lastName" type="text" name="gval" placeholder="lastName">
+			<input id="age" type="text" name="bval" placeholder="age">
+			<input id="pet" type="text" name="bval" placeholder="pet Y/N">
+			<input id="drake" type="text" name="bval" placeholder="Fav. DRAKE">
+		</form>
+	</div>
+		<div id="toParse" onclick="toParse()">PUT DATA</div>
+	</div><br>
+<div id="output">
+		<div id="fromParse" onclick="fromParse()">GET DATA</div>
+
+		<div id="pfirstName"><p>pfirstName</p></div>
+		<div id="plastName"><p>plastName</p></div>
+		<div id="page"><p>page</p></div>
+		<div id="ppet"><p>ppet</p></div>
+		<div id="pdrake"><p>pdrake</p></div>
+</div>
+		<script src="http://192.168.1.142:8000/socket.io/socket.io.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+		<script>
+			var socket = io.connect('http://192.168.1.142:8000');
+
+			function toParse(){
+				console.log("Send data to Parse");
+				var firstName = document.getElementById('firstName').value;
+				var lastName = document.getElementById('lastName').value;
+				var age = document.getElementById('age').value;
+				var pet = document.getElementById('pet').value;
+				var drake = document.getElementById('drake').value;
+				socket.emit('sendToParse', { firstName: firstName, lastName: lastName, age:age, pet:pet,drake:drake });
+				document.getElementsByName('firstName').placeholder='new text for email';
+				
+			}
+			
+
+			function fromParse(){
+				console.log("Get data from Parse");
+				socket.emit('getFromParse', { });
+			}
+
+			socket.on('toScreen', function (data) {
+				var num=Object.keys(data.ParseData.results).length;
+				if (num==1){num=0;}
+				var pfirstName = data.ParseData.results[parseInt(num)-1].firstName;
+				var plastName = data.ParseData.results[parseInt(num)-1].lastName;
+				var page = data.ParseData.results[parseInt(num)-1].age;
+				var ppet= data.ParseData.results[parseInt(num)-1].pet;
+				var pdrake= data.ParseData.results[parseInt(num)-1].drake;
+				console.log(num);
+				document.getElementById("pfirstName").innerHTML = pfirstName;
+				document.getElementById("plastName").innerHTML = plastName;
+				document.getElementById("page").innerHTML = page;
+				document.getElementById("ppet").innerHTML = ppet;
+				document.getElementById("pdrake").innerHTML = pdrake;
+			});
+
+			//this is going to be what we write it in
+
+			//LED
+
+			//POTMETER
+
+			//ANALOG BUTTON
+
+		</script>
+	</body>
+</html>
