@@ -1,39 +1,44 @@
-/////Change inner html to "Hello Cats"
+// ///Change inner html to "Hello Cats"
 // var myHeading = document.querySelector('h1');
 // myHeading.innerHTML = 'Hello Cats!';
 
-////Alert... the cat is crying
+// //Alert... the cat is crying
 // var myVariable = document.querySelector('h1');
 // alert('MEEAAOOW!!!');
 
 
 // ////process and pass function into html
 // var myHeading = document.querySelector('h1');
+
 // function multiply(num1,num2) {
 //   var result = num1 * num2;
 //   return result;
 // }
-// myHeading.innerHTML = multiply(20,20);
+// // myHeading.innerHTML = multiply(20,20);
 // myHeading.innerHTML = multiply(0.5,3);
 
 
-// //FUNCTION AS VARIABLE
+//FUNCTION AS VARIABLE
 // function toCelsius(fahrenheit) {
 //     return (5/9) * (fahrenheit-32);
 // }
+// var temp=2000;
 // var myVariable = document.querySelector('h1');
-// document.getElementById("title").innerHTML = "The temperature is " + toCelsius(77) + " Celsius";
+// document.getElementById("title").innerHTML = "The temperature is " + toCelsius(temp) + " Celsius";
 
 
-// ////click html to change inner html text
+////click html to change inner html text
 // var myHeading = document.querySelector('h1');
-// document.querySelector('html').onclick = function() {
+
+// document.querySelector('h1').onclick = function() {
 //     myHeading.innerHTML = 'HTML CLICKED';
 // }
 
-// // ////click html to change inner html text
+// ////click html to change inner html text
 // var myHeading = document.querySelector('h1');
+
 // var myHTML = document.querySelector('html');
+
 // myHTML.onclick = function() {
 // 	myHeading.innerHTML = 'HTML CLICKED';
 // };
@@ -41,6 +46,7 @@
 
 // //TOGGLE IMAGE
 // var myImage = document.querySelector('img');
+
 // myImage.onclick = function() {
 //     var mySrc = myImage.getAttribute('src');
 //     if(mySrc === 'images/cat.png') {
@@ -51,9 +57,11 @@
 // }
 
 
-/////Change users and store in local storage
+///Change users and store in local storage
 // var myButton = document.querySelector('button');
+
 // var myHeading = document.querySelector('h1');
+
 // function setUserName() {
 // 	var storedName = localStorage.getItem('name');
 // 	if (!localStorage.getItem('name')){
@@ -67,6 +75,7 @@
 // 	localStorage.setItem('name', myName);
 // }
 // }
+
 // g.onclick = function() {
 //   setUserName();
 // }
@@ -86,7 +95,7 @@
 // }
 
 
-// ///VALIDATE NUMBER
+///VALIDATE NUMBER
 // function validateNumber() {
 //     var x, text;
 //     // Get the value of the input field with id="numb"
@@ -101,7 +110,7 @@
 // }
 
 
-////ADDRESS HTML DOCUMENT
+//ADDRESS HTML DOCUMENT
 // function alertWindow(){
 // window.alert(5 + 6);}
 
@@ -109,7 +118,7 @@
 // document.write(5 + 6);}
 
 
-////OBJECTS 
+//OBJECTS 
 // var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
 // var car = {type:"Fiat", model:500, color:"white"};
 // document.getElementById("demo").innerHTML = car;
@@ -118,7 +127,7 @@
 
 
 
-//// / ARRAYS
+// / ARRAYS
 // var fruits = ["Banana", "Orange", "Apple", "Mango"];
 // fruits.push("Cherry"); 
 // fruits.sort();
@@ -127,12 +136,13 @@
 // document.getElementById("demo2").innerHTML = fruits;
 
 
-////Button to list
+//Button to list
 // var fruits = ["Banana", "Orange", "Apple", "Mango"];
 // function list() {
-//     var index;
+    
 //     var text = "<ul>";
-//     for (index = 0; index < fruits.length; index++) {
+
+//     for (var index = 0; index < fruits.length; index++) {
 //         text += "<li>" + fruits[index] + "</li>";
 //     }
 //     text += "</ul>";
@@ -140,23 +150,23 @@
 // }
 
 
-///JSON
-// var text = {"adresses":[
-// {
-// 	"name":"John Johnson",
-// 	"street":"Oslo West 16",
-// 	"phone":"555 1234567"},
+///////JSON
+var text = {"adresses":[
+{
+	"name":"John Johnson",
+	"street":"Oslo West 16",
+	"phone":"555 1234567"},
 
-// {	"name":"Ayo Okunseinde",
-// 	"street":"235 Jefferson",
-// 	"phone":"555 789098"},
+{	"name":"Ayo Okunseinde",
+	"street":"235 Jefferson",
+	"phone":"555 789098"},
 
-// {	"name":"Darke Idiot",
-// 	"street":"0 Dance Skills",
-// 	"phone":"555 777777"},
-// ]};
-// document.getElementById("demo").innerHTML = text.adresses[0].name + "<br>" + text.adresses[1].name + "<br>" +
-// text.adresses[2].phone[8];
+{	"name":"Darke Idiot",
+	"street":"0 Dance Skills",
+	"phone":"555 777777"},
+]};
+document.getElementById("demo").innerHTML = text.adresses[0].name + "<br>" + text.adresses[1].name + "<br>" +
+text.adresses[2].phone[8];
 
 
 
