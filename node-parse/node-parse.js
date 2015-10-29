@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('sendToParse', function (data) {
     console.log(data);
-    appParse.insert('Students', { firstName: data.firstName,lastName:data.lastName,age:data.age,pet:data.pet,drake:data.drake }, function (err, response) {
+    appParse.insert('WootWoot', { firstName: data.firstName,lastName:data.lastName,age:data.age,pet:data.pet,drake:data.drake }, function (err, response) {
   	// console.log(response);
   	console.log("entry made");
 	});
@@ -37,7 +37,7 @@ io.sockets.on('connection', function (socket) {
 
 
 socket.on('getFromParse', function (data) {
-    appParse.find('Students', '', function (err, response) {
+    appParse.find('WootWoot', '', function (err, response) {
   console.log(response);
   socket.emit('toScreen',{ ParseData: response });
 });
