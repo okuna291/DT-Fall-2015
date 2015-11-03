@@ -1,6 +1,6 @@
 // ///Change inner html to "Hello Cats"
 // var myHeading = document.querySelector('h1');
-// myHeading.innerHTML = 'Hello Cats!';
+// myHeading.innerHTML = 'Hellooooooooo Cats!';
 
 // //Alert... the cat is crying
 // var myVariable = document.querySelector('h1');
@@ -14,23 +14,24 @@
 //   var result = num1 * num2;
 //   return result;
 // }
-// // myHeading.innerHTML = multiply(20,20);
+// myHeading.innerHTML = multiply(20,20);
 // myHeading.innerHTML = multiply(0.5,3);
 
 
-//FUNCTION AS VARIABLE
+// //////FUNCTION AS VARIABLE
 // function toCelsius(fahrenheit) {
 //     return (5/9) * (fahrenheit-32);
 // }
+
 // var temp=2000;
 // var myVariable = document.querySelector('h1');
 // document.getElementById("title").innerHTML = "The temperature is " + toCelsius(temp) + " Celsius";
 
 
-////click html to change inner html text
+// //click html to change inner html text
 // var myHeading = document.querySelector('h1');
 
-// document.querySelector('h1').onclick = function() {
+// document.querySelector('HTML').onclick = function() {
 //     myHeading.innerHTML = 'HTML CLICKED';
 // }
 
@@ -44,11 +45,12 @@
 // };
 
 
-// //TOGGLE IMAGE
+//TOGGLE IMAGE
 // var myImage = document.querySelector('img');
 
 // myImage.onclick = function() {
 //     var mySrc = myImage.getAttribute('src');
+
 //     if(mySrc === 'images/cat.png') {
 //       myImage.setAttribute ('src','images/dog.png');
 //     } else {
@@ -67,6 +69,8 @@
 // 	if (!localStorage.getItem('name')){
 // myHeading.innerHTML = 'NO USER IN LOCAL STORAGE';
 // }
+
+
 //   var myName = prompt('Please enter your name.');
 // if (storedName==myName){
 // 	myHeading.innerHTML = 'Welcome back, ' + myName;
@@ -95,7 +99,7 @@
 // }
 
 
-///VALIDATE NUMBER
+// ///VALIDATE NUMBER
 // function validateNumber() {
 //     var x, text;
 //     // Get the value of the input field with id="numb"
@@ -131,7 +135,7 @@
 // var fruits = ["Banana", "Orange", "Apple", "Mango"];
 // fruits.push("Cherry"); 
 // fruits.sort();
-// fruits[fruits.length] = "Lemon"; 
+// fruits[0] = "Lemon"; 
 // document.getElementById("demo").innerHTML = fruits.length;
 // document.getElementById("demo2").innerHTML = fruits;
 
@@ -150,7 +154,7 @@
 // }
 
 
-///////JSON
+// ///////JSON
 var text = {"adresses":[
 {
 	"name":"John Johnson",
@@ -166,7 +170,7 @@ var text = {"adresses":[
 	"phone":"555 777777"},
 ]};
 document.getElementById("demo").innerHTML = text.adresses[0].name + "<br>" + text.adresses[1].name + "<br>" +
-text.adresses[2].phone[8];
+text.adresses[2].phone[0];
 
 
 

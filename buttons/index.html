@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+
+    <script src="sketch.js" type="text/javascript"></script>
+
+    <script src="//192.168.1.142:8000/socket.io/socket.io.js" type="text/javascript"></script>
+
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+  </head>
+  <body>
+
+<script>
+var socket;
+var red,blue,green;
+var url='192.168.1.142';
+var port=8000
+//var url='http//47.18.216.182';
+  socket = io.connect(url+':'+port);//create instance of socket io
+
+
+  socket.on('serialText', function (data) { //listen for toScreen fron socket 
+    s=data.s;
+    var res = s.split(",");
+    red=res[1];
+    green=res[2];
+    blue=res[3];
+  });
+
+
+
+function left(){
+  socket.emit('fromLeftBut', { l: "left" });//emit js object with given value
+  // console.log("you clicked left button");
+}
+
+function right(){
+  socket.emit('fromRightBut', { r: "right" });//emit js object with given value
+  // console.log("you clicked right button");
+}
+
+</script>
+  </body>
+</html>
