@@ -16,8 +16,7 @@ net.createServer(function(sock) {
         
         console.log('DATA ' + sock.remoteAddress + ': ' + data);
         //// Write the data back to the socket, the client will receive it as data from the server
-        sock.write('FROM CLIENT "' + data + '"');
-
+        sock.write('This is Server Response - Client sent"' + data + '"');
         
     });
     
